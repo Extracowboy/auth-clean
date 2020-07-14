@@ -1,5 +1,7 @@
 <?php
 
+require_once('globals.php');
+
 const ACTION_SIGN_UP = 'sign_up';
 const ACTION_SIGN_IN = 'sign_in';
 
@@ -19,8 +21,8 @@ if (isset($_POST['action'])) {
 function signUp()
 {
     unset($_SESSION['error']);
-    if (empty($_POST['username']) || empty($_POST['password'])) {
-        $_SESSION['error'] = 'Имя пользователя или пароль не введены.';
+    if (empty($_POST['username']) || empty($_POST['password']) || empty($_POST['email'])) {
+        $_SESSION['error'] = 'Имя пользователя, пароль или почта<br>не введены.';
         header("Location: logon.php?action=sign_up");
         exit();
     }
@@ -41,10 +43,11 @@ function signUp()
         exit();
     }
 
-    $stmt = $db->prepare("insert into user (username, password, fullname) values (?, ?, ?)");
+    $stmt = $db->prepare("insert into user (username, email, password, fullname) values (?, ?, ?, ?)");
     $password = password_hash($_POST['password'], PASSWORD_BCRYPT);
-    $stmt->bind_param('sss',
+    $stmt->bind_param('ssss',
         $_POST['username'],
+        $_POST['email'],
         $password,
         $_POST['fullname']
     );

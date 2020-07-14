@@ -1,6 +1,6 @@
 <?php
 
-include('globals.php');
+require_once('globals.php');
 
 session_start();
 
@@ -28,6 +28,11 @@ if (!empty($_SESSION['error'])) {
         var $username = document.getElementById('id_username').value;
         if ($username.length === 0) {
             setError('Имя пользователя не введено.');
+            return;
+        }
+        var $email = document.getElementById('id_email').value;
+        if ($email.length === 0) {
+            setError('Почта не введена.');
             return;
         }
 
@@ -88,6 +93,10 @@ if (!empty($_SESSION['error'])) {
             <div class="logon_row">
                 <div class="input_title">Повторите пароль</div>
                 <input type="password" name="password_confirm" id="id_password_confirm" autocomplete="off">
+            </div>
+            <div class="logon_row">
+                <div class="input_title">Электронная почта</div>
+                <input type="text" name="email" id="id_email" value="">
             </div>
             <div class="logon_row">
                 <div class="input_title">ФИО</div>
