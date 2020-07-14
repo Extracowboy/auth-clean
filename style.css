@@ -1,0 +1,41 @@
+html {
+    font-family: Consolas, sans-serif;
+}
+
+p.error {
+    color: crimson;
+}
+
+p.success {
+    color: forestgreen;
+}
+
+.nav-block {
+    margin-bottom: 10px;
+}
+
+.logon_row, .settings_row {
+    text-align: center;
+    display: block;
+    margin: 10px auto;
+}
+
+.logon_row .input_title, .settings_row .input_title {
+    display: block;
+}
+
+.logon_row input, .settings_row input {
+    width: 200px;
+    text-align: center;
+}
+
+.logon_row button, .settings_row button {
+    font-family: Consolas, sans-serif;
+}
+
+.center_block {
+    margin: auto;
+    width: 450px;
+    border: 2px solid sandybrown;
+    padding: 10px;
+}
